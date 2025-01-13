@@ -180,6 +180,20 @@ const Game = (function()
 
         const gameboard = document.querySelector('.gameboard')
 
+        gameboard.addEventListener('mouseover', function(e){
+            if (e.target.classList.contains('square') && e.target.textContent === ""){
+                e.target.style.opacity = "0.5"
+                e.target.textContent = currentPlayer.getSymbol()
+            }
+        })
+
+        gameboard.addEventListener('mouseout', function(e){
+            if (e.target.classList.contains('square') && e.target.style.opacity === "0.5"){
+                e.target.textContent = ""
+                e.target.style.opacity = ""
+            }
+        })
+
         gameboard.addEventListener('click', function(e)
     {
         if (e.target.classList.contains('square'))
